@@ -1,7 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Processing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .file-upload {
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>File Processing</h1>
+    <form id="fileForm" method="post" enctype="multipart/form-data">
+        <label for="task">Select Task:</label>
+        <select id="task" name="task" onchange="toggleFileUpload()">
+            <option value="">--Select an option--</option>
+            <option value="generate_plans">Generate Plans</option>
+            <option value="international_model">International Model</option>
+        </select>
+
+        <div id="fileUpload" class="hidden file-upload">
+            <label for="file">Select input file:</label>
+            <input type="file" id="file" name="file" required>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function toggleFileUpload() {
+            const task = document.getElementById('task').value;
+            const fileUpload = document.getElementById('fileUpload');
+            fileUpload.classList.toggle('hidden', !task);
+        }
+    </script>
 </body>
 </html>
